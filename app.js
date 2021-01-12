@@ -1,33 +1,53 @@
-// Assigning variables
-let button = document.querySelector('#button')
-let characterName = document.querySelector('#character-name')
-let picture = document.querySelector('#picture')
-let h1 = document.querySelector('#title')
+// Materialize behavior
+$('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
+    });
 
-// Event
-button.addEventListener('click', displayInfo)
+// Function searchAnime
+function searchAnime(e) {
 
-// Functions
+    e.preventDefault();
 
-function displayInfo() {
-    
-    let randomNumber = (Math.floor(Math.random() * 671) + 1)
+    const form = new FormData(this);
+    const query = form.get('search');
 
-    let newUrl = 'https://rickandmortyapi.com/api/character/' + randomNumber
-
-    fetch(newUrl)
-    .then(function(response) {return response.json()})
-    .then(function(data) {insertInfo(data)})
+    fetch(`https://api.jikan.moe/v3/search/anime?q=${query}&page=1`)
+    .then(response => response.json())
+    .then(displayResults)
+    .catch(error => console.warn(error.message));
 }
 
-function insertInfo(data) {
-    h1.innerHTML = ""
-    picture.innerHTML = `<img src=${data.image}></img>`
-    characterName.innerHTML = `
-    ${data.name}<br> 
-    <h4>Gender: ${data.gender}</h4> 
-    <h4>Species: ${data.species}</h4> 
-    <h4>Status: ${data.status}</h4>
-    <h4>Place of Origins: ${data.origin.name}</h4>
-    `  
+// Function displayResults
+function displayResults(data) {
+
+    const searchResults = document.getElementById('search-results');
+
+    searchResults.innerHTML = data.results
+    .map(anime => {
+        return `
+            <div class="card">
+                <div class="card-image">
+                    <img src="${anime.image_url}">
+                </div>
+
+                <div class="card-content">
+                    <span class="card-title"><b>● ${anime.title}</b> (${anime.rated})</span>
+                    <h6>${anime.synopsis}</h6>
+                    <p>Number of episode(s): ${anime.episodes}</p>
+                    <p>Anime Score: ${anime.score}</p><br>
+                    <a id="redirect" href="https://animepahe.com" class="button btn-large">Watch this Anime</a>
+                </div>
+            </div>`
+    }).join("");
 }
+
+// Function loadPage
+function loadPage() {
+    const form = document.getElementById('search_form');
+    form.addEventListener('submit', searchAnime);
+}
+
+
+// DOM Loaded Content
+window.addEventListener('load', loadPage)

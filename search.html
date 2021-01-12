@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/dbdd28d96d.js" crossorigin="anonymous"></script> 
+    <link rel="shortcut icon" href="media/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <title>Anime Finder</title>
+</head>
+
+<body>
+ <!-- Navbar -->
+ <nav>
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <div class="container">
+                <a href="index.html" class="brand-logo">Anime Finder</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="home.html"><i class="material-icons left">house_siding</i>Home</a></li>   
+                        <li><a href="search.html"><i class="material-icons left">search</i>Search</a></li>
+                        <li><a href="about.html"><i class="material-icons left">account_circle</i>About</a></li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Search -->
+<div class="container">
+    <div class="row">
+        <form id="search_form" class="col s12 m6">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Enter a title" name="search" id="search" type="text">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Results -->
+<div id="search-results" class="container">
+     <!--This is where the results will appear  -->
+</div>
+<div style="height: 100px;"></div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
