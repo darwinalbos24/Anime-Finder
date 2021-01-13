@@ -1,16 +1,13 @@
 body {
     font-family: "Good Sans", Helvetica;
-    background: url(media/bg.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size:cover;
+    background: url(media/BG.jpg);
+    background-repeat:initial;
+    background-size: contain;
 }
 
-video {
-
-    width: 705px; 
-    height: 450px;
-    margin-left: 12%;
+.video-container {
+    border-radius: 40px;
+    width: 93%;
 }
 
 nav .nav-wrapper {
